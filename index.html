@@ -2,13 +2,21 @@
 <html>
   <head>
     <title>Angular QuickStart</title>
+    <base href="/">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
     <link rel="stylesheet" href="styles.css">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.auth0.com/js/lock/10.9.1/lock.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
-
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
 
@@ -19,6 +27,71 @@
   </head>
 
   <body>
-    <my-app>Loading AppComponent content here ...</my-app>
+
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <img src="images/test-logo.png">
+                    <h3 style="color: #ffffff;font-weight: 700;float: left;font-size:20px;">
+                        GO<span style="font-weight: 400">PARK</span>
+                    </h3>
+                </li>
+                <li>
+                    <a href="#dashboard" class="active" id="dashLink">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#profile" id="profLink">Profile</a>
+                </li>
+                <li>
+                    <a href="#suggestions" id="suggLink">Community Suggestions</a>
+                </li>
+                <li>
+                    <a href="#search" id="searLink">New Search</a>
+                </li>
+                <li>
+                    <a href="#contact" id="contLink">Contact</a>
+                </li>
+                <li style="margin-top: 30px;
+    background: #1b2d46;">
+                    <a id="btn-logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">&#9776;</a>
+                        <dashboard>Loading AppComponent content here ...</dashboard>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+
   </body>
 </html>

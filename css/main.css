@@ -1,0 +1,333 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+ body {
+    overflow-x: hidden;
+ }
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #2a4264;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav li .active {
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-brand img {
+    height: 100%;
+    float: left;
+    margin-left: 20px;   
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 67px;
+    margin-top: 5px;
+    font-size: 18px;
+    line-height: 60px;
+    display: inline-block;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.todaySuggested {
+ margin-top: 20px;   
+}
+
+.todaySuggested a {
+    background-color: #eee;
+    background-position: center 80%;
+    background-repeat: no-repeat;
+    height: 100%;
+    color: #fff;
+    overflow: hidden;
+    background-size: cover; 
+    width: 100%;
+    display: block;
+    border-radius: 7px;
+    text-align: center;
+    padding: 35px 0;
+    margin-top: 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    margin-bottom: 10px;
+    transition: .5s ease all;
+    max-width: 700px;
+}
+
+
+.todaySuggested a:hover, .smallSuggested a:hover, .largeSuggested a:hover {
+    text-decoration: none;
+    color: #bfbfbf;
+}
+
+#ajax img {
+    width: 100%;
+}
+
+#ajax {
+    margin-top: 40px;
+}
+
+#left-column {
+    padding: 5px 30px;
+    background-color: #2a4264;
+    max-width: 40%;
+    color: #fff;
+    margin-bottom: 20px;
+    float: left;
+}
+
+#right-column {
+    width: 60%;
+    float: left;
+    padding-left: 30px;
+}
+
+#right-column p {
+    padding-top: 10px;
+}
+
+#profile ul {
+ list-style: none;
+ padding: 0; 
+}
+
+#profile p {
+ font-size: 16px;
+ padding: 0; 
+}
+
+#profile ul li {
+ font-size: 16px;
+ padding: 3px 0;
+}
+
+#suggestions {
+    padding-bottom: 40px;
+}
+
+#search {
+   /* max-width: 800px; */
+}
+
+.largeSuggested {
+ margin: 20px 0;   
+}
+
+.largeSuggested a{
+    background-color: #cfcfcf;
+    background-position: center 50%;
+    background-repeat: no-repeat;
+    height: 100%;
+    color: #fff;
+    overflow: hidden;
+    background-size: cover; 
+    width: 100%;
+    display: block;
+    border-radius: 7px;
+    text-align: center;
+    max-width: 700px;
+    padding: 90px 0;
+    margin-top: 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    margin-bottom: 10px;
+    transition: .5s ease all;   
+}
+
+.smallSuggested a h3 {
+   font-size: 18px; 
+}
+
+.smallSuggested {
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
+.smallSuggested a{
+    background-color: #cfcfcf;
+    background-position: center 65%;
+    background-repeat: no-repeat;
+    height: 100%;
+    color: #fff;
+    font-size: 12px;
+    overflow: hidden;
+    background-size: cover; 
+    width: 100%;
+    display: inline-block;
+    border-radius: 7px;
+    max-width: 700px;
+    text-align: center;
+    padding: 25px;
+    margin-top: 5px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    margin-bottom: 10px;
+    transition: .5s ease all;   
+}
+
+.buttonHolder {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    text-align: left !important;
+}
+
+#storyButton {
+    color: #2a4264;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 2px solid #2a4264;
+    font-size: 1.2em;
+    margin-top: 20px;
+    padding: 10px 30px;
+    transition: ease all .6s;
+    font-family: "Open Sans", "Multi", Helvetica, sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+
+#contact a, #moreInfo {
+    color: #2a4264;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 2px solid #2a4264;
+    font-size: 1.2em; 
+    margin-top: 20px;
+    margin: 0 auto;
+    padding: 20px 50px;
+    margin: 0 auto;
+    transition: ease all .6s;
+    font-family: "Open Sans", "Multi", Helvetica, sans-serif;
+    font-weight: 700;
+}
+
+#contact a:hover, #moreInfo:hover, #storyButton:hover {
+    border-color: #2a4264;
+    color: #f4f4f4;
+    background-color: #2a4264;
+    text-decoration: none;
+}
+
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 0;
+    }
+
+    #wrapper.toggled {
+        padding-left: 250px;
+    }
+
+    #sidebar-wrapper {
+        width: 0px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+    @media only screen and (max-width: 40em) {
+ 
+    #left-column, #right-column {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 30px;
+}
+    #mobile-flip {
+     display: flex;
+     flex-direction: column-reverse;
+    }
+    
+}

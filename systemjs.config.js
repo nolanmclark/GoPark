@@ -13,6 +13,8 @@
       // our app is within the app folder
       app: 'app',
 
+      'ng2-sidebar': 'node_modules/ng2-sidebar',
+
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
       '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
@@ -25,7 +27,8 @@
 
       // other libraries
       'rxjs':                      'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+      'angular2-jwt': 'npm:angular2-jwt/angular2-jwt.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -35,6 +38,9 @@
       },
       rxjs: {
         defaultExtension: 'js'
+      },
+      'angular2-jwt': {
+          defaultExtension: 'js'
       }
     }
   });

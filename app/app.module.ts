@@ -5,16 +5,21 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AUTH_PROVIDERS }      from 'angular2-jwt';
 
-import { DashboardComponent }  from './dashboard.component';
+import { AppComponent } from './app.component';
+import { DashboardComponent }  from './dashboard/dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
 
 import { routing,
          appRoutingProviders } from './app.routes';
 
+import { Auth } from './auth.service';
+
 @NgModule({
-  declarations: [ DashboardComponent ],
+  declarations: [ AppComponent, DashboardComponent, ProfileComponent ],
   providers: [
     appRoutingProviders,
-    AUTH_PROVIDERS
+    AUTH_PROVIDERS,
+    Auth
   ],
   imports: [        BrowserModule,
         routing,
@@ -22,6 +27,6 @@ import { routing,
         HttpModule,
         JsonpModule
         ],
-  bootstrap:    [ DashboardComponent ]
+  bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

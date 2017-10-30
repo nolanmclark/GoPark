@@ -6,7 +6,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 export class parkService {
-private apiKey = 'yQHOLGovVAtEaSGBy9mnoNbGxdTMQ3NUNCYQhul4';
+private apiKey = '';
 private apiUrl = 'https://developer.nps.gov/api/v1/parks?q=';
 private images = '&fields=images';
 q: any;

@@ -10,10 +10,10 @@ export class AuthService {
   userProfile: any;
 
   auth0 = new auth0.WebAuth({
-    clientID: 'HuIk02ExITh91ahIrfZnylge3kOMDbpx',
-    domain: 'nolanclark.auth0.com',
-    responseType: 'token id_token',
-    audience: 'https://nolanclark.auth0.com/userinfo',
+    clientID: '',
+    domain: '',
+    responseType: '',
+    audience: '',
     redirectUri: 'http://localhost:4200/',     
     scope: 'openid profile'
   });

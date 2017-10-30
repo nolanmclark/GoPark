@@ -1,9 +1,0 @@
-<h1>User Profile Information</h1>
-<div *ngIf="!auth.authenticated()">
-    <div class="alert alert-danger">Oops! You need to log in!</div>
-</div>
-<div *ngIf="auth.authenticated()">
-<p>Name: {{auth.userProfile.nickname}}</p>
-<p>Email: {{auth.userProfile.email}}</p>
-<p>Favorites: </p>
-</div>

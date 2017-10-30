@@ -1,0 +1,14 @@
+<div id="dashboard">
+    <h1 *ngIf="!auth.isAuthenticated()">Welcome, guest!</h1>
+    <h1 *ngIf="auth.isAuthenticated()">Welcome back, {{profile?.given_name}}!</h1>
+    <p>Begin your adventure by searching or selecting one of your saved favorites.</p>
+    <br />
+    <h3>Featured:</h3>
+    <div class="todaySuggested">
+        <div *ngFor="let park of featured">
+            <a [ngStyle]="{'background-image': 'url(' + park.images[0].url + ')'}" (click)="search(park)">
+                <h3>{{park.fullName}}</h3>
+            </a>
+        </div>
+    </div>
+</div>

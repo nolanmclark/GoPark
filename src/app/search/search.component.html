@@ -1,0 +1,33 @@
+<div id="search">
+    <h1>New Park Search</h1>
+    <p>Search a park by name, find out interesting facts and view photos from the park!</p>
+    <input [(ngModel)]="q" placeholder="Find a location..." class="form-control controls" (keypress)="onKey($event)" />
+    <div id="info">
+        <div id="parkSuggestion" *ngFor="let park of parkData">
+            <h4 (click)="select(park)">{{park.fullName}}</h4>
+        </div>
+    </div>
+
+    <div id="parkInfo" *ngIf="view" style="padding-bottom: 40px; margin: 40px 0; max-width: 100%">
+        <img style="width: 100%" src={{park.images[0].url}}>
+        <div id="mobile-flip">
+            <!-- <div id="left-column">
+                <h2>Park Facts</h2>
+                <h3>States:</h3>
+                <p>{{park.states}}</p>
+                <h3>Directions:</h3>
+                <p>{{park.directionsUrl}}</p>
+                <h3>Weather:</h3>
+                <p>{{park.weatherInfo}}</p>
+            </div> -->
+            <div id="right-column">
+                <h1 style="font-size: 2.3em; color: #2a4364;">{{park.fullName}}</h1>
+                <p>{{park.description}}</p>
+                <div class="buttonHolder">
+                    <a id="storyButton" href="#">View Photos</a>
+                    <a id="storyButton" href="#">Add to Favorites</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,8 @@
 # GoPark
 
-Find facts and information about any of the US National Parks. This is a great tool to save your favorite parks and view all the visitor information to help you plan your next trip. This project is currently in development stages.
+Find facts and information about any of the US National Parks. This is a great tool to save your favorite parks and view all the visitor information to help you plan your next trip. This project is currently in development. 
+
+Front-end is Angular 4, 0Auth implementation for authentication (although I might make the switch to Firebase Auth), and uses the NPS API for all park data, https://github.com/nationalparkservice. 
 
 ## Build
 

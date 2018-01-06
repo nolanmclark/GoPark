@@ -1,0 +1,13 @@
+@font-face {
+  font-family: Averta Black;
+  src: url('../../assets/fonts/Averta-Black.woff') format('woff');
+}
+
+@font-face {
+  font-family: Averta Light;
+  src: url('../../assets/fonts/Averta-Light.woff') format('woff');
+}
+
+* {
+  font-family: "Averta Black";
+}

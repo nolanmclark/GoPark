@@ -1,5 +1,15 @@
-h1, h2, h3, h4, p, a {
-    font-family: 'Open Sans', sans-serif;
+@font-face {
+  font-family: Averta Black;
+  src: url('../../assets/fonts/Averta-Black.woff') format('woff');
+}
+
+@font-face {
+  font-family: Averta Light;
+  src: url('../../assets/fonts/Averta-Light.woff') format('woff');
+}
+
+* {
+  font-family: "Averta Black", sans-serif;
 }
 
 body {
@@ -15,7 +25,7 @@ body {
     height: 100%;
     opacity: .7;
     overflow: hidden;
-    background-size: cover;   
+    background-size: cover;
 }
 .welcome {
     top: 30%;
@@ -45,7 +55,7 @@ body {
 }
 
 #signIn a:hover {
-    background-color: #1c2d44;   
+    background-color: #1c2d44;
 }
 
 .controls {
@@ -83,5 +93,5 @@ body {
 }
 
 input {
- font: 12px "Open Sans" !important;   
+ font: 12px "Open Sans" !important;
 }

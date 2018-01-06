@@ -3,10 +3,11 @@ import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import { Observable, Observer } from 'rxjs';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {npsKey} from '../../keys/npsKeys';
 
 @Injectable()
 export class parkService {
-private apiKey = '';
+private apiKey = npsKey.apiKey;
 private apiUrl = 'https://developer.nps.gov/api/v1/parks?q=';
 private images = '&fields=images';
 q: any;

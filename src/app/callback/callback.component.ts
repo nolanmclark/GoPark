@@ -14,7 +14,6 @@ export class CallbackComponent implements OnInit  {
     ngOnInit() {
         setTimeout((router: Router) => {
           this.router.navigate(['/dashboard']);
-      }, 3000);  
+      }, 3000);
     }
-
  }

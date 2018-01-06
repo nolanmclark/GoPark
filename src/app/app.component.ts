@@ -1,39 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './auth.service';
 import { Router, Event as RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router'
 import {NgZone, Renderer, ElementRef, ViewChild} from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase';
 
 @Component({
   moduleId: module.id,
   selector: 'my-app',
   templateUrl: 'app.component.html'
 })
-export class AppComponent implements OnInit { 
+export class AppComponent {
 
 profile: any;
 
 @ViewChild('spinnerElement')
 spinnerElement: ElementRef
+isSignedOut: boolean;
+user = {};
 
-constructor(public auth: AuthService, private router: Router, private ngZone: NgZone, private renderer: Renderer, private http: Http) {
-    auth.handleAuthentication();
+constructor(public afAuth: AngularFireAuth, private router: Router, private ngZone: NgZone, private renderer: Renderer, private http: Http) {
     router.events.subscribe((event: RouterEvent) => {
-      this._navigationInterceptor(event)
+      this._navigationInterceptor(event);
     })
+    this.checkForLogin();
 }
 
-ngOnInit() {
-  if(this.auth.handleAuthentication()) {
-    if (this.auth.userProfile) {
-        this.profile = this.auth.userProfile;
-    } else {
-        this.auth.getProfile((err, profile) => {
-        this.profile = profile;
-        });
-    }
-  }
+checkForLogin() {
+  let user = firebase.auth().currentUser;
+  if(user != null)
+    this.user = user;
+    return true;
+}
+
+logout() {
+  firebase.auth().signOut().then(() => {
+    this.router.navigateByUrl('');
+    this.isSignedOut = false;
+    this.user = {};
+  })
 }
 
 private _navigationInterceptor(event: RouterEvent): void {
@@ -68,15 +74,16 @@ private _hideSpinner(): void {
   })
 }
 
+
   openNav(event:any): void {
     var container = document.querySelector('#wrapper');
     container.classList.toggle('toggled');
   }
-  
+
   navSelect(event:any): void {
-    var active = document.querySelector(".active"); 
+    var active = document.querySelector(".active");
     active.classList.remove("active");
-  
+
     var selection = document.querySelector(event.target);
     selection.classList.add('active');
   }

@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
-import { AuthService }  from '../auth.service';
 import { parkService } from '../parkService/parkService.service';
+import { Router, Event as RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
+import * as firebase from 'firebase';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   moduleId: module.id,
   selector: 'dashboard',
-  providers: [ AuthService, parkService ],
+  providers: [ parkService ],
   templateUrl: 'dashboard.component.html',
 })
 export class DashboardComponent {
@@ -17,11 +19,18 @@ parkResults: any;
 parkSuggestions: any;
 parkData: any;
 featured = [];
+user = {};
+isSignedOut: any;
 
-constructor(public auth: AuthService, public park: parkService){
-    auth.handleAuthentication();
-    this.fetchProfile();
+constructor(private router: Router, public park: parkService){
     this.fetchParks();
+}
+
+checkForLogin() {
+  let user = firebase.auth().currentUser;
+  if(user != null)
+    this.user = user;
+    return true;
 }
 
 fetchParks() {
@@ -38,17 +47,8 @@ fetchParks() {
     }
 }
 
-fetchProfile() {
-    try {
-        if (this.auth.userProfile) {
-            this.profile = this.auth.userProfile;
-        } else {
-            this.auth.getProfile((err, profile) => {
-                this.profile = profile;
-            });
-        }
-    } catch(e) {
-        this.profile = {}
-    }
-}
+  search(park) {
+    this.router.navigate(['/search', {park: park}]);
+    console.log("Sent " + park.fullName);
+  }
 }

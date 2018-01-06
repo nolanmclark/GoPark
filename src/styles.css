@@ -12,11 +12,31 @@
     font-style: normal;
 }
 
-body {
-    overflow-x: hidden;
-    font-family: 'Oxygen', monospace, sans-serif;
+@font-face {
+  font-family: Averta Black;
+  src: url('fonts/Averta-Black.woff') format('woff');
 }
 
+@font-face {
+  font-family: Averta Light;
+  src: url('fonts/Averta-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: Averta;
+  src: url('fonts/Averta.woff') format('woff');
+}
+
+@font-face {
+  font-family: Averta Semi;
+  src: url('fonts/Averta-Semibold.woff') format('woff');
+}
+
+
+body {
+    overflow-x: hidden;
+    font-family: 'Averta Semi', 'Oxygen', monospace, sans-serif;
+}
 
 /* Toggle Styles */
 
@@ -899,8 +919,8 @@ my-app:empty+.loading {
 }
 
 
-/* 
-	Ok so you have made it this far, that means you are very keen to on my code. 
+/*
+	Ok so you have made it this far, that means you are very keen to on my code.
 	Anyway I don't really mind it. This is a great way to learn so you actually doing the right thing:)
 	Follow me @ihatetomatoes
 */

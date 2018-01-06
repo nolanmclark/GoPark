@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
+import * as firebase from 'firebase';
 
 @Component({
   moduleId: module.id,
@@ -9,23 +9,15 @@ import { AuthService } from '../auth.service';
 export class ProfileComponent {
 
     profile:any;
+    user = {};
 
-    constructor(public auth: AuthService){
-        auth.handleAuthentication();
-        this.fetchProfile();
+    constructor() {
     }
 
-    fetchProfile() {
-        try {
-            if (this.auth.userProfile) {
-                this.profile = this.auth.userProfile;
-            } else {
-                this.auth.getProfile((err, profile) => {
-                    this.profile = profile;
-                });
-            }
-        } catch(e) {
-            this.profile = {}
-        }
-    } 
+    checkForLogin() {
+      let user = firebase.auth().currentUser;
+      if(user != null)
+        this.user = user;
+        return true;
+    }
 }

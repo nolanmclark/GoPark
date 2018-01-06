@@ -7,6 +7,20 @@
     color: #fff;
 }
 
+@font-face {
+  font-family: Averta Black;
+  src: url('../../assets/fonts/Averta-Black.woff') format('woff');
+}
+
+@font-face {
+  font-family: Averta Light;
+  src: url('../../assets/fonts/Averta-Light.woff') format('woff');
+}
+
+* {
+  font-family: "Averta Black";
+}
+
 [class^="icon-"],
 [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */

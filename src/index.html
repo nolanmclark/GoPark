@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
-    <base href="/project/gopark/">
+    <base href="/">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://use.fontawesome.com/306cf3f967.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -20,6 +20,19 @@
 
 <body>
     <my-app></my-app>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAc_2_RUjpFeo4wqJUP_ONodFbd9GwyoQE",
+        authDomain: "gopark-c2c10.firebaseapp.com",
+        databaseURL: "https://gopark-c2c10.firebaseio.com",
+        projectId: "gopark-c2c10",
+        storageBucket: "gopark-c2c10.appspot.com",
+        messagingSenderId: "262782403093"
+      };
+      firebase.initializeApp(config);
+    </script>
     <script>
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
@@ -27,5 +40,4 @@
         });
     </script>
 </body>
-
 </html>

@@ -36,8 +36,8 @@
                             <h1>GOPARK</h1>
                         </div> -->
                         <div id="navbar-login" style="float: right">
-                            <button id="loginStatus" class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.isAuthenticated()">Log In</button>
-                            <button id="loginStatus" class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.isAuthenticated()">Log Out</button>
+                            <button id="loginStatus" class="btn btn-primary btn-margin" [routerLink]="[ '/login' ]" *ngIf="checkForLogin()">Log In</button>
+                            <button id="loginStatus" class="btn btn-primary btn-margin" (click)="logout()" *ngIf="!checkForLogin()">Log Out</button>
                         </div>
                     </div>
                     <router-outlet></router-outlet>

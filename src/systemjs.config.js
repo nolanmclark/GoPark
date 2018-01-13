@@ -29,7 +29,10 @@
             // other libraries
             'rxjs': 'npm:rxjs',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-            'angular2-jwt': 'npm:angular2-jwt/angular2-jwt.js'
+            'angular2-jwt': 'npm:angular2-jwt/angular2-jwt.js',
+            'hammerjs'                  : 'node_modules/hammerjs',
+            'mousetrap'                 : 'node_modules/mousetrap'
+            'angular-modal-gallery'     : 'node_modules/angular-modal-gallery/dist/bundles',
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -42,7 +45,10 @@
             },
             'angular2-jwt': {
                 defaultExtension: 'js'
-            }
+            },
+            'hammerjs'                  : { main: 'hammer.js' },
+            'mousetrap'                 : { main: 'mousetrap.js' },
+            'angular-modal-gallery'     : { main: 'angular-modal-gallery.umd.js' }
         }
     });
 })(this);

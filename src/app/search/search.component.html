@@ -1,3 +1,19 @@
+<style>
+#storyButtonFavorited {
+    color: #2a4264;
+    border-radius: 4px;
+    background-color: #cfcfcf;
+    color: #777;
+    font-size: 1.2em;
+    margin-top: 20px;
+    padding: 10px 30px;
+    transition: ease all .6s;
+    font-family: "Open Sans", "Multi", Helvetica, sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+</style>
+
 <div id="search">
     <h1>New Park Search</h1>
     <p>Search a park by name, find out interesting facts and view photos from the park!</p>
@@ -7,6 +23,7 @@
             <h4 (click)="select(park)">{{park.fullName}}</h4>
         </div>
     </div>
+
 
     <div id="parkInfo" *ngIf="view" style="padding-bottom: 40px; margin: 40px 0; max-width: 100%">
         <img style="width: 100%" src={{park.images[ran].url}}>
@@ -23,9 +40,13 @@
             <div id="right-column">
                 <h1 style="font-size: 2.3em; color: #2a4364;">{{park.fullName}}</h1>
                 <p>{{park.description}}</p>
+                <modal-gallery [enableCloseOutside]="true"
+                              [buttonsConfig]="{download: false, extUrl: false, close: true}"
+                              [modalImages]="photoCollection"
+                              ></modal-gallery>
                 <div class="buttonHolder">
-                    <a id="storyButton" href="#">View Photos</a>
-                    <a id="storyButton" href="#">Add to Favorites</a>
+                    <a *ngIf="!isFavorite" id="storyButton" (click)="favorite(park)">Add to Favorites</a>
+                    <a *ngIf="isFavorite" id="storyButtonFavorited" (click)="favorite(park)"> Remove from Favorites</a>
                 </div>
             </div>
         </div>

@@ -1,9 +1,46 @@
 <h1>User Profile Information</h1>
-<div *ngIf="!checkForLogin()">
+<style>
+.fav-card {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+.fav-card-content {
+  flex-direction: column;
+  margin-left: 10px;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+}
+.fav-card-content h2 {
+  margin: 0;
+  margin: #000;
+}
+.fav-card-content p {
+  margin: 0;
+  color: #777;
+}
+.fav-card img {
+  width: auto;
+  height: 70px;
+  border-radius: 10px;
+}
+</style>
+<div *ngIf="!isSignedIn">
     <div class="alert alert-danger">Oops! You need to log in!</div>
 </div>
-<div *ngIf="checkForLogin()">
+<div *ngIf="isSignedIn">
     <img style="width: 50px" src="{{ user?.photoURL }}" />
     <p>Name: {{ user?.displayName }}</p>
     <p>Favorites: </p>
+    <p *ngIf="noFavorites" style="color: #666; font-weight: 300">Looks like you don't have any favorites yet! Add parks to see them here.</p>
+    <div *ngIf="!noFavorites">
+    <div class="fav-card" *ngFor="let park of favorites" (click)="search(park)">
+      <img src={{park?.images[0].url}} />
+      <div class="fav-card-content">
+        <h2>{{park?.fullName}}</h2>
+        <p>{{park?.designation}}</p>
+      </div>
+    </div>
+  </div>
 </div>

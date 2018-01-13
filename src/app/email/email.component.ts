@@ -26,9 +26,7 @@ export class EmailComponent {
       console.log(formData.value);
       let email = formData.value.email;
       let password = formData.value.password;
-      this.af.auth.signInWithEmailAndPassword(email, password)
-      .then(
-        (success) => {
+      this.af.auth.signInWithEmailAndPassword(email, password).then((success) => {
         console.log(success);
         this.router.navigate(['/profile']);
       }).catch(

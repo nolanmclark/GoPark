@@ -5,6 +5,10 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
+import {UserService} from './userService/userService';
+import { AngularFirestoreCollection, AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Profile} from './models/profile';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   moduleId: module.id,
@@ -17,27 +21,49 @@ profile: any;
 
 @ViewChild('spinnerElement')
 spinnerElement: ElementRef
-isSignedOut: boolean;
-user = {};
+isSignedIn: any;
+user: any = {};
+userProfile: AngularFirestoreCollection<Profile>;
 
-constructor(public afAuth: AngularFireAuth, private router: Router, private ngZone: NgZone, private renderer: Renderer, private http: Http) {
+
+constructor(public userService: UserService, public afAuth: AngularFireAuth, private router: Router, private ngZone: NgZone, private renderer: Renderer, private http: Http) {
     router.events.subscribe((event: RouterEvent) => {
       this._navigationInterceptor(event);
+      this.checkForLogin();
     })
-    this.checkForLogin();
+}
+
+async ngOnInit() {
+  await this.checkForLogin();
+  if(this.isSignedIn === true) {
+    await this.getUserDetails();
+  }
 }
 
 checkForLogin() {
   let user = firebase.auth().currentUser;
-  if(user != null)
+  if(user != null) {
     this.user = user;
-    return true;
+    this.isSignedIn = true;
+    return;
+  } else {
+    this.isSignedIn = false;
+  }
+}
+
+getUserDetails() {
+  const ref: Observable<Profile> = this.userService.getUserDetails();
+    ref.subscribe(res => {
+      this.user.fullName = res.fullName;
+      this.user.avatar = res.photoURL;
+      this.user.favoritesList = res.favorites;
+    })
 }
 
 logout() {
   firebase.auth().signOut().then(() => {
     this.router.navigateByUrl('');
-    this.isSignedOut = false;
+    this.isSignedIn = false;
     this.user = {};
   })
 }

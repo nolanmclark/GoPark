@@ -29,4 +29,9 @@ data: any = {};
     let url = 'https://developer.nps.gov/api/v1/parks?q=che&api_key=' + this.apiKey + this.images;
     return this.http.get(url).map((res: Response) => res.json());
   }
+
+  searchByParkCode(code) {
+    let url = this.apiUrl + code + '&api_key=' + this.apiKey + this.images;
+    return this.http.get(url).map((res: Response) => res.json());
+  }
 }

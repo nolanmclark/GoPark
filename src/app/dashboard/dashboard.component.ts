@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { parkService } from '../parkService/parkService.service';
-import { Router, Event as RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
+import { Router, NavigationExtras, Event as RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
 import * as firebase from 'firebase';
 import { SearchComponent } from '../search/search.component';
+import { Data } from '../providers/data/data';
 
 @Component({
   moduleId: module.id,
@@ -22,7 +23,7 @@ featured = [];
 user = {};
 isSignedOut: any;
 
-constructor(private router: Router, public park: parkService){
+constructor(private data: Data, private router: Router, public park: parkService){
     this.fetchParks();
 }
 
@@ -48,7 +49,8 @@ fetchParks() {
 }
 
   search(park) {
-    this.router.navigate(['/search', {park: park}]);
+    this.data.storage = park;
+    this.router.navigate(['/search']);
     console.log("Sent " + park.fullName);
   }
 }

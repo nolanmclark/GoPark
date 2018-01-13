@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule, Http, RequestOptions } from '@angular/http';
 
 import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
+import 'hammerjs';
+import 'mousetrap';
+import { ModalGalleryModule } from 'angular-modal-gallery';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent }  from './dashboard/dashboard.component';
@@ -17,14 +20,18 @@ import { AngularFireModule } from 'angularfire2';
 import { routing, appRoutingProviders } from './app.routes';
 import * as firebase from 'firebase';
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
 
 import { AuthService } from './auth.service';
 import { parkService } from './parkService/parkService.service';
+import { UserService } from './userService/userService';
 
 import { firebaseConfig } from '../keys/firebaseConfig';
 import { LoginComponent } from './login/login.component';
 import { EmailComponent } from './email/email.component';
 import { SignupComponent } from './signup/signup.component';
+import { Data } from './providers/data/data';
+
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig({}), http, options);
@@ -40,7 +47,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     appRoutingProviders,
     AuthService,
     parkService,
-    AngularFireAuth
+    UserService,
+    AngularFireAuth,
+    Data
   ],
   imports: [
     BrowserModule,
@@ -50,7 +59,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HttpModule,
     JsonpModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    ModalGalleryModule.forRoot(),
+    AngularFirestoreModule,
   ],
   bootstrap:    [ AppComponent ]
 })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
+import {UserService} from '../userService/userService';
 
 @Component({
   selector: 'app-signup',
@@ -9,23 +10,25 @@ import * as firebase from 'firebase';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-  state: string = '';
+    state: string = '';
     error: any;
 
-    constructor(public af: AngularFireAuth ,private router: Router) {
+    constructor(private userService: UserService, public af: AngularFireAuth ,private router: Router) {
 
     }
 
-    onSubmit(formData) {
+    async onSubmit(formData) {
       if(formData.valid) {
         console.log(formData.value);
         let email = formData.value.email;
         let password = formData.value.password;
-        this.af.auth.createUserWithEmailAndPassword(email, password)
-        .then(
-          (success) => {
+        let newuser = {
+          password: password,
+          email: email
+        }
+        await this.userService.addUser(newuser).then((success) => {
           console.log(success);
-          this.router.navigate(['/login'])
+          this.router.navigate(['/profile']);
         }).catch(
           (err) => {
           console.log(err);
@@ -33,4 +36,4 @@ export class SignupComponent {
         })
       }
     }
-}
+  }

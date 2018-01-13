@@ -19,6 +19,38 @@ body {
     overflow-x: hidden;
 }
 
+.more {
+  position: absolute;
+  /* margin: 0px; */
+  /* top: 0px; */
+  margin-top: 2px;
+  /* word-break: break-word; */
+  background: rgba(0, 0, 0, 0.7);
+  height: 50px;
+  width: 50px;
+  padding-left: 0px;
+  padding-top: 2px;
+  padding-top: 2px;
+  text-align: center;
+}
+
+.list-img {
+  height: 50px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.float-left {
+  float: left;
+  margin-right: 5px;
+  color: #ffffff;
+}
+
+.float-left a:hover {
+  color: red;
+  cursor: pointer;
+
+
 
 /* Toggle Styles */
 
@@ -267,6 +299,20 @@ body {
     border-radius: 4px;
     background-color: #fff;
     border: 2px solid #2a4264;
+    font-size: 1.2em;
+    margin-top: 20px;
+    padding: 10px 30px;
+    transition: ease all .6s;
+    font-family: "Open Sans", "Multi", Helvetica, sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+
+#storyButtonFavorited {
+    color: #2a4264;
+    border-radius: 4px;
+    background-color: #aaa;
+    color: #777;
     font-size: 1.2em;
     margin-top: 20px;
     padding: 10px 30px;

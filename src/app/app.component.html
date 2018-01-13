@@ -14,11 +14,8 @@
             <li class="fa fa-user" [routerLink]="[ '/profile' ]">
                 <a id="profLink">Profile</a>
             </li>
-            <li class="fa fa-binoculars" [routerLink]="[ '/search' ]">
+            <li class="fa fa-binoculars" [routerLink]="[ '/search']">
                 <a id="searLink">New Search</a>
-            </li>
-            <li class="fa fa-users">
-                <a href="#" (click)="navSelect($event)" id="suggLink">Community Suggestions</a>
             </li>
             <li class="fa fa-phone" [routerLink]="[ '/contact' ]">
                 <a id="contLink">Contact</a>
@@ -36,8 +33,8 @@
                             <h1>GOPARK</h1>
                         </div> -->
                         <div id="navbar-login" style="float: right">
-                            <button id="loginStatus" class="btn btn-primary btn-margin" [routerLink]="[ '/login' ]" *ngIf="checkForLogin()">Log In</button>
-                            <button id="loginStatus" class="btn btn-primary btn-margin" (click)="logout()" *ngIf="!checkForLogin()">Log Out</button>
+                            <button id="loginStatus" class="btn btn-primary btn-margin" [routerLink]="[ '/login' ]" *ngIf="!isSignedIn">Log In</button>
+                            <button id="loginStatus" class="btn btn-primary btn-margin" (click)="logout()" *ngIf="isSignedIn">Log Out</button>
                         </div>
                     </div>
                     <router-outlet></router-outlet>

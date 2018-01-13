@@ -1,12 +1,12 @@
 <div id="dashboard">
     <h1 *ngIf="!checkForLogin()">Welcome, guest!</h1>
-    <h1 *ngIf="checkForLogin()">Welcome back, {{user?.displayName}}!</h1>
+    <h1 *ngIf="checkForLogin()">Welcome back, {{user?.displayName || 'guest'}}!</h1>
     <p>Begin your adventure by searching or selecting one of your saved favorites.</p>
     <br />
     <h3>Featured:</h3>
     <div class="todaySuggested">
         <div *ngFor="let park of featured" (click)="search(park)">
-            <a [ngStyle]="{'background-image': 'url(' + park.images[0].url + ')'}">
+            <a [ngStyle]="{'background-image': 'url(' + park?.images[0].url + ')'}">
                 <h3>{{park.fullName}}</h3>
             </a>
         </div>

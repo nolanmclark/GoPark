@@ -7,7 +7,7 @@ import {npsKey} from '../../keys/npsKeys';
 
 @Injectable()
 export class parkService {
-private apiKey = npsKey.apiKey;
+private apiKey = "7rOlsCxCqwkatJxI7By3wfOUN7wk1OjfdkXfQ1ua";
 private apiUrl = 'https://developer.nps.gov/api/v1/parks?q=';
 private images = '&fields=images';
 q: any;
